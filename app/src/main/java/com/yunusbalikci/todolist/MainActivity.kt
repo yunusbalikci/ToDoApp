@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils
 import com.yunusbalikci.todolist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    val SPLASH_SCREEN: Int = 4000
+    val SPLASH_SCREEN: Int = 3000
     private lateinit var binding: ActivityMainBinding
     private lateinit var topAnim: Animation
     private lateinit var botAnim: Animation

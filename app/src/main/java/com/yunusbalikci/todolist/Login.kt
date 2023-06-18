@@ -16,7 +16,7 @@ class Login : AppCompatActivity() {
     private lateinit var topAnim: Animation
     private lateinit var botAnim: Animation
     private lateinit var firebaseAuth: FirebaseAuth
-    val SPLASH_SCREEN: Int = 4000
+    val SPLASH_SCREEN: Int = 3000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +35,7 @@ class Login : AppCompatActivity() {
                     if (it.isSuccessful){
                         val intent = Intent(this@Login,ToDoActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }else{
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }
@@ -69,6 +70,17 @@ class Login : AppCompatActivity() {
         Handler().postDelayed({
             // Burada diğer aktiviteyi başlatmak için Intent kullanabilirsiniz
         }, SPLASH_SCREEN.toLong())
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if(firebaseAuth.currentUser != null){
+            val intent = Intent(this@Login,ToDoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
 
